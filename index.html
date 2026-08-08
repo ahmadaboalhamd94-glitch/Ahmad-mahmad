@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ahmad mahmad | Computer Maintenance & Networking | Aspiring Software Developer</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description"
+    content="Official Portfolio of Ahmad mahmad - Computer Maintenance & Networking Student, Aspiring Software Developer, Networking Enthusiast, and Cybersecurity Learner.">
+  <meta name="keywords"
+    content="Ahmad mahmad, Software Developer, Networking, Cybersecurity, Computer Maintenance, Python, C++, Cisco Packet Tracer, Linux, IT Engineer, Egyptian School of Computers">
+  <meta name="author" content="Ahmad mahmad">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / Facebook / LinkedIn Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ahmadaboalhamd94-glitch.github.io/">
+  <meta property="og:title" content="Ahmad mahmad | Portfolio">
+  <meta property="og:description"
+    content="Computer Maintenance & Networking Student | Aspiring Software Developer & Cybersecurity Specialist.">
+  <meta property="og:image"
+    content="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1200&auto=format&fit=crop">
+
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ahmad mahmad | Portfolio">
+  <meta name="twitter:description"
+    content="Computer Maintenance & Networking Student | Aspiring Software Developer & Cybersecurity Specialist.">
+  <meta name="twitter:image"
+    content="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1200&auto=format&fit=crop">
+
+  <!-- Favicon (Data SVG URL) -->
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%233b82f6'/><text x='50' y='65' font-size='50' font-weight='bold' fill='white' text-anchor='middle' font-family='sans-serif'>AM</text></svg>">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- Floating Ambient Gradient Glow Shapes -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+  <div class="ambient-glow glow-3"></div>
+
+  <!-- Scroll Progress Indicator -->
+  <div class="scroll-progress-container">
+    <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+  </div>
+
+  <!-- Sticky Navigation Header -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#hero" class="brand-logo" aria-label="Ahmed mahmad Homepage">
+        <span class="logo-code">&lt;</span>
+        <span class="logo-text">Ahmed<span class="logo-highlight">Mahmad</span></span>
+        <span class="logo-code">/&gt;</span>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="nav-menu" id="navMenu">
+        <ul class="nav-list">
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#experience" class="nav-link">Experience</a></li>
+          <li><a href="#education" class="nav-link">Education</a></li>
+          <li><a href="#strengths" class="nav-link">Strengths</a></li>
+          <li><a href="#services" class="nav-link">Services</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Header Actions: Theme Switcher & Mobile Menu Toggle -->
+      <div class="nav-actions">
+        <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle light and dark mode">
+          <i class="fa-solid fa-moon moon-icon"></i>
+          <i class="fa-solid fa-sun sun-icon"></i>
+        </button>
+        <button id="mobileMenuBtn" class="mobile-menu-btn" aria-label="Open Mobile Menu" aria-expanded="false">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Nav Backdrop Overlay -->
+  <div class="nav-overlay" id="navOverlay"></div>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section id="hero" class="hero-section">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <div class="hero-badge reveal-fade">
+            <span class="pulse-dot"></span>
+            <span>Available for Projects & Learning Opportunities</span>
+          </div>
+
+          <h1 class="hero-title reveal-fade">
+            Hi, I'm <span class="text-gradient">Ahmad mahmad</span>
+          </h1>
+
+          <div class="hero-typing-wrapper reveal-fade">
+            <span class="typing-prefix">I am a </span>
+            <span class="typing-text" id="typingText"></span>
+            <span class="typing-cursor">|</span>
+          </div>
+
+          <p class="hero-description reveal-fade">
+            Third-year high school student at the <strong>Egyptian School of Computers</strong> specializing in
+            <span class="highlight-text">Computer Maintenance & Networking</span>. Passionate about Programming,
+            Networking, and Cybersecurity—building practical projects while continuously advancing through
+            self-learning.
+          </p>
+
+          <div class="hero-buttons reveal-fade">
+            <a href="#projects" class="btn btn-primary">
+              <span>View My Work</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <a href="#contact" class="btn btn-outline">
+              <span>Get In Touch</span>
+              <i class="fa-solid fa-paper-plane"></i>
+            </a>
+          </div>
+
+          <div class="hero-socials reveal-fade">
+            <span class="social-label">Connect:</span>
+            <div class="social-links">
+              <a href="https://github.com/ahmadaboalhamd94-glitch" target="_blank" rel="noopener noreferrer"
+                class="social-icon" aria-label="GitHub Profile">
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-icon"
+                aria-label="LinkedIn Profile">
+                <i class="fa-brands fa-linkedin-in"></i>
+              </a>
+              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-icon"
+                aria-label="YouTube Channel">
+                <i class="fa-brands fa-youtube"></i>
+              </a>
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-icon"
+                aria-label="Facebook Profile">
+                <i class="fa-brands fa-facebook-f"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal-fade">
+          <div class="profile-card-wrapper">
+            <div class="profile-glow"></div>
+            <div class="profile-card glass-card">
+              <div class="profile-header">
+                <div class="mac-dots">
+                  <span class="dot red"></span>
+                  <span class="dot yellow"></span>
+                  <span class="dot green"></span>
+                </div>
+                <div class="profile-tag"><i class="fa-solid fa-terminal"></i> dev.profile</div>
+              </div>
+              <div class="profile-avatar">
+                <div class="avatar-ring">
+                  <i class="fa-solid fa-user-gear avatar-icon"></i>
+                </div>
+              </div>
+              <div class="profile-info">
+                <h3>Ahmad mahmad</h3>
+                <p class="profile-sub">Hardware & Networking Specialist</p>
+                <div class="profile-status">
+                  <i class="fa-solid fa-location-dot"></i> Egypt | Egyptian School of Computers
+                </div>
+              </div>
+              <div class="code-snippet-box">
+                <pre><code><span class="code-keyword">const</span> <span class="code-var">developer</span> = {
+  <span class="code-prop">name</span>: <span class="code-string">"Ahmad mahmad"</span>,
+  <span class="code-prop">specialty</span>: <span class="code-string">"Networking & Maintenance"</span>,
+  <span class="code-prop">passion</span>: [<span class="code-string">"Software"</span>, <span class="code-string">"Cybersecurity"</span>],
+  <span class="code-prop">status</span>: <span class="code-string">"Building & Learning"</span>
+};</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Stats Counter Strip -->
+      <div class="hero-stats-strip">
+        <div class="container stats-grid">
+          <div class="stat-card reveal-up">
+            <div class="stat-number"><span class="counter" data-target="3">0</span>+</div>
+            <div class="stat-label">Years Technical Studies</div>
+          </div>
+          <div class="stat-card reveal-up">
+            <div class="stat-number"><span class="counter" data-target="3">0</span>+</div>
+            <div class="stat-label">Core Projects Completed</div>
+          </div>
+          <div class="stat-card reveal-up">
+            <div class="stat-number"><span class="counter" data-target="5">0</span>+</div>
+            <div class="stat-label">Core Tech Focus Areas</div>
+          </div>
+          <div class="stat-card reveal-up">
+            <div class="stat-number"><span class="counter" data-target="100">0</span>%</div>
+            <div class="stat-label">Dedication & Self-Learning</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAREER OBJECTIVE BANNER -->
+    <section class="objective-section section-padding">
+      <div class="container">
+        <div class="objective-card glass-card reveal-up">
+          <div class="objective-icon-box">
+            <i class="fa-solid fa-bullseye"></i>
+          </div>
+          <div class="objective-content">
+            <span class="section-subtitle">Core Vision</span>
+            <h2>Career Objective</h2>
+            <p>
+              My goal is to become a professional <strong>Software Developer</strong> and <strong>Cybersecurity
+                Specialist</strong> while continuously improving my programming and networking skills through real-world
+              projects and continuous learning. I aim to contribute to innovative technology solutions that make a
+              positive impact.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT ME SECTION -->
+    <section id="about" class="about-section section-padding">
+      <div class="container">
+        <div class="section-header text-center reveal-up">
+          <span class="section-subtitle">Get To Know Me</span>
+          <h2 class="section-title">About <span class="text-gradient">Ahmad mahmad</span></h2>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-bio glass-card reveal-left">
+            <div class="bio-header">
+              <i class="fa-solid fa-user-astronaut bio-icon"></i>
+              <h3>Professional Biography</h3>
+            </div>
+            <p class="bio-paragraph">
+              I am Ahmad mahmad, a third-year high school student at the <strong>Egyptian School of Computers</strong>,
+              specializing in <strong>Computer Maintenance and Networking</strong>.
+            </p>
+            <p class="bio-paragraph">
+              I am deeply passionate about Programming, Computer Networks, and Cybersecurity. I believe that learning by
+              building real projects is the fastest and most effective path to becoming a high-caliber professional IT
+              engineer.
+            </p>
+            <p class="bio-paragraph">
+              Through self-directed learning, hands-on experimentation, and practical lab environments, I continuously
+              refine my skill set. I thrive on solving complex technical challenges and exploring emerging technologies.
+            </p>
+
+            <div class="quote-box">
+              <i class="fa-solid fa-quote-left quote-icon"></i>
+              <p class="quote-text">
+                "Learning by building real projects is the fastest path to becoming a professional IT engineer."
+              </p>
+            </div>
+          </div>
+
+          <div class="about-details-column reveal-right">
+            <div class="quick-facts-card glass-card">
+              <h3><i class="fa-solid fa-circle-info text-gradient"></i> Quick Highlights</h3>
+              <ul class="facts-list">
+                <li>
+                  <div class="fact-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                  <div class="fact-info">
+                    <span class="fact-title">Institution</span>
+                    <span class="fact-value">Egyptian School of Computers</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="fact-icon"><i class="fa-solid fa-network-wired"></i></div>
+                  <div class="fact-info">
+                    <span class="fact-title">Specialization</span>
+                    <span class="fact-value">Computer Maintenance & Networking</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="fact-icon"><i class="fa-solid fa-layer-group"></i></div>
+                  <div class="fact-info">
+                    <span class="fact-title">Academic Level</span>
+                    <span class="fact-value">3rd-Year High School Student</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="fact-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                  <div class="fact-info">
+                    <span class="fact-title">Aspiration</span>
+                    <span class="fact-value">Software Dev & Cybersecurity Specialist</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Languages Card -->
+            <div class="languages-card glass-card margin-top-sm">
+              <h3><i class="fa-solid fa-language text-gradient"></i> Languages Spoken</h3>
+              <div class="language-items">
+                <div class="lang-item">
+                  <div class="lang-info">
+                    <span class="lang-name">Arabic</span>
+                    <span class="lang-level">Native</span>
+                  </div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" style="width: 100%;"></div>
+                  </div>
+                </div>
+                <div class="lang-item">
+                  <div class="lang-info">
+                    <span class="lang-name">English</span>
+                    <span class="lang-level">Beginner to Intermediate</span>
+                  </div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" style="width: 55%;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="skills-section section-padding bg-alt">
+      <div class="container">
+        <div class="section-header text-center reveal-up">
+          <span class="section-subtitle">Technical Proficiency</span>
+          <h2 class="section-title">Skills & <span class="text-gradient">Competencies</span></h2>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="skills-grid">
+          <!-- Programming Languages Card -->
+          <div class="skill-category-card glass-card reveal-up">
+            <div class="category-header">
+              <div class="category-icon-bg"><i class="fa-solid fa-code"></i></div>
+              <h3>Programming Languages</h3>
+            </div>
+            <div class="skills-list">
+              <div class="skill-item">
+                <div class="skill-meta">
+                  <span class="skill-name"><i class="fa-brands fa-python"></i> Python</span>
+                  <span class="skill-percent">75%</span>
+                </div>
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill skill-fill" data-percent="75"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-meta">
+                  <span class="skill-name"><i class="fa-solid fa-cubes"></i> C++</span>
+                  <span class="skill-percent">40%</span>
+                </div>
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill skill-fill" data-percent="40"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-meta">
+                  <span class="skill-name"><i class="fa-brands fa-html5"></i> HTML5</span>
+                  <span class="skill-percent">60%</span>
+                </div>
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill skill-fill" data-percent="60"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-meta">
+                  <span class="skill-name"><i class="fa-brands fa-css3-alt"></i> CSS3</span>
+                  <span class="skill-percent">20%</span>
+                </div>
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill skill-fill" data-percent="20"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-meta">
+                  <span class="skill-name"><i class="fa-brands fa-js"></i> JavaScript</span>
+                  <span class="skill-percent">50%</span>
+                </div>
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill skill-fill" data-percent="50"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Operating Systems Card -->
+          <div class="skill-category-card glass-card reveal-up" style="transition-delay: 0.1s;">
+            <div class="category-header">
+              <div class="category-icon-bg"><i class="fa-solid fa-desktop"></i></div>
+              <h3>Operating Systems</h3>
+            </div>
+            <div class="skills-list">
+              <div class="skill-item">
+                <div class="skill-meta">
+                  <span class="skill-name"><i class="fa-brands fa-windows"></i> Windows</span>
+                  <span class="skill-percent">80%</span>
+                </div>
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill skill-fill" data-percent="80"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-meta">
+                  <span class="skill-name"><i class="fa-brands fa-linux"></i> Linux</span>
+                  <span class="skill-percent">60%</span>
+                </div>
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill skill-fill" data-percent="60"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Networking Card -->
+          <div class="skill-category-card glass-card reveal-up" style="transition-delay: 0.2s;">
+            <div class="category-header">
+              <div class="category-icon-bg"><i class="fa-solid fa-diagram-project"></i></div>
+              <h3>Networking</h3>
+            </div>
+            <div class="skills-list">
+              <div class="skill-item">
+                <div class="skill-meta">
+                  <span class="skill-name"><i class="fa-solid fa-network-wired"></i> Cisco Packet Tracer</span>
+                  <span class="skill-percent">40%</span>
+                </div>
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill skill-fill" data-percent="40"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Computer Maintenance Card -->
+          <div class="skill-category-card glass-card reveal-up" style="transition-delay: 0.3s;">
+            <div class="category-header">
+              <div class="category-icon-bg"><i class="fa-solid fa-wrench"></i></div>
+              <h3>Computer Maintenance</h3>
+            </div>
+            <div class="badges-grid">
+              <span class="badge-item"><i class="fa-solid fa-screwdriver-wrench"></i> Hardware Troubleshooting</span>
+              <span class="badge-item"><i class="fa-solid fa-download"></i> Software Installation</span>
+              <span class="badge-item"><i class="fa-solid fa-compact-disc"></i> OS Installation</span>
+              <span class="badge-item"><i class="fa-solid fa-microchip"></i> Driver Installation</span>
+            </div>
+          </div>
+
+          <!-- Areas of Interest Card -->
+          <div class="skill-category-card glass-card reveal-up" style="transition-delay: 0.4s;">
+            <div class="category-header">
+              <div class="category-icon-bg"><i class="fa-solid fa-compass"></i></div>
+              <h3>Areas of Interest</h3>
+            </div>
+            <div class="interests-grid">
+              <div class="interest-chip"><i class="fa-solid fa-terminal"></i> Programming</div>
+              <div class="interest-chip"><i class="fa-solid fa-network-wired"></i> Networking</div>
+              <div class="interest-chip"><i class="fa-solid fa-shield-halved"></i> Cybersecurity</div>
+              <div class="interest-chip"><i class="fa-solid fa-puzzle-piece"></i> Problem Solving</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="projects-section section-padding">
+      <div class="container">
+        <div class="section-header text-center reveal-up">
+          <span class="section-subtitle">Portfolio Showcase</span>
+          <h2 class="section-title">Featured <span class="text-gradient">Projects</span></h2>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Project 1 -->
+          <div class="project-card glass-card reveal-up">
+            <div class="project-banner python-bg">
+              <div class="banner-overlay"></div>
+              <div class="project-icon"><i class="fa-brands fa-python"></i></div>
+              <span class="project-badge status-completed"><i class="fa-solid fa-circle-check"></i> Completed</span>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Python Calculator</h3>
+              <p class="project-description">
+                A calculator application developed using Python that performs essential arithmetic operations while
+                demonstrating functions, user input handling, and conditional logic.
+              </p>
+              <div class="project-tech-tags">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Functions</span>
+                <span class="tech-tag">CLI / Logic</span>
+              </div>
+              <div class="project-footer">
+                <a href="https://github.com/ahmadaboalhamd94-glitch" target="_blank" rel="noopener noreferrer"
+                  class="btn btn-sm btn-outline">
+                  <i class="fa-brands fa-github"></i> View Code
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="project-card glass-card reveal-up" style="transition-delay: 0.15s;">
+            <div class="project-banner cpp-bg">
+              <div class="banner-overlay"></div>
+              <div class="project-icon"><i class="fa-solid fa-gamepad"></i></div>
+              <span class="project-badge status-completed"><i class="fa-solid fa-circle-check"></i> Completed</span>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Tetris Game (C++)</h3>
+              <p class="project-description">
+                A Tetris game developed in C++ to improve object-oriented programming skills, algorithm development, and
+                game logic implementation.
+              </p>
+              <div class="project-tech-tags">
+                <span class="tech-tag">C++</span>
+                <span class="tech-tag">OOP</span>
+                <span class="tech-tag">Game Logic</span>
+                <span class="tech-tag">Algorithms</span>
+              </div>
+              <div class="project-footer">
+                <a href="https://github.com/ahmadaboalhamd94-glitch" target="_blank" rel="noopener noreferrer"
+                  class="btn btn-sm btn-outline">
+                  <i class="fa-brands fa-github"></i> View Code
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="project-card glass-card reveal-up" style="transition-delay: 0.3s;">
+            <div class="project-banner network-bg">
+              <div class="banner-overlay"></div>
+              <div class="project-icon"><i class="fa-solid fa-network-wired"></i></div>
+              <span class="project-badge status-wip"><i class="fa-solid fa-spinner fa-spin"></i> In Progress</span>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Cisco Packet Tracer Network Project</h3>
+              <p class="project-description">
+                Designing and configuring a simulated computer network using Cisco Packet Tracer while learning routing,
+                switching, and network configuration.
+              </p>
+              <div class="project-tech-tags">
+                <span class="tech-tag">Cisco Packet Tracer</span>
+                <span class="tech-tag">Routing</span>
+                <span class="tech-tag">Switching</span>
+                <span class="tech-tag">Subnetting</span>
+              </div>
+              <div class="project-footer">
+                <a href="https://github.com/ahmadaboalhamd94-glitch" target="_blank" rel="noopener noreferrer"
+                  class="btn btn-sm btn-outline">
+                  <i class="fa-brands fa-github"></i> Track Progress
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE SECTION -->
+    <section id="experience" class="experience-section section-padding bg-alt">
+      <div class="container">
+        <div class="section-header text-center reveal-up">
+          <span class="section-subtitle">Practical Experience</span>
+          <h2 class="section-title">Work & <span class="text-gradient">Hands-On Experience</span></h2>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="timeline-wrapper">
+          <div class="timeline-item reveal-up">
+            <div class="timeline-dot">
+              <i class="fa-solid fa-briefcase"></i>
+            </div>
+            <div class="timeline-content glass-card">
+              <div class="timeline-header">
+                <div>
+                  <h3 class="timeline-role">Computer Maintenance Technician</h3>
+                  <span class="timeline-meta">Hands-on Labs & Technical Repair</span>
+                </div>
+                <span class="timeline-date-badge"><i class="fa-regular fa-calendar-check"></i> Present / Active</span>
+              </div>
+              <p class="timeline-summary">
+                Responsible for hardware assembly, system diagnostics, operating system deployment, and software driver
+                optimization in workshop and academic laboratory environments.
+              </p>
+              <h4 class="responsibilities-title"><i class="fa-solid fa-list-check text-gradient"></i> Key
+                Responsibilities:</h4>
+              <ul class="responsibilities-list">
+                <li><i class="fa-solid fa-check-circle"></i> Diagnosing desktop and laptop hardware problems</li>
+                <li><i class="fa-solid fa-check-circle"></i> Repairing desktop computers and replacing faulty components
+                </li>
+                <li><i class="fa-solid fa-check-circle"></i> Installing and configuring Windows Operating Systems</li>
+                <li><i class="fa-solid fa-check-circle"></i> Installing necessary hardware drivers for graphics, audio,
+                  and network adapters</li>
+                <li><i class="fa-solid fa-check-circle"></i> Installing required utility software and applications</li>
+                <li><i class="fa-solid fa-check-circle"></i> Troubleshooting complex software issues, system crashes,
+                  and OS errors</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION SECTION -->
+    <section id="education" class="education-section section-padding">
+      <div class="container">
+        <div class="section-header text-center reveal-up">
+          <span class="section-subtitle">Academic Background</span>
+          <h2 class="section-title">Education & <span class="text-gradient">Qualifications</span></h2>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="education-wrapper">
+          <div class="education-card glass-card reveal-up">
+            <div class="edu-badge"><i class="fa-solid fa-school"></i></div>
+            <div class="edu-details">
+              <span class="edu-level">Third-Year High School Student</span>
+              <h3 class="edu-school">Egyptian School of Computers</h3>
+              <div class="edu-major">
+                <i class="fa-solid fa-microchip"></i> Major: <strong>Computer Maintenance and Networking</strong>
+              </div>
+              <p class="edu-desc">
+                Enrolled in specialized technical high school curriculum focused on hardware engineering, network
+                infrastructure, operating systems, and core computer science principles.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STRENGTHS SECTION -->
+    <section id="strengths" class="strengths-section section-padding bg-alt">
+      <div class="container">
+        <div class="section-header text-center reveal-up">
+          <span class="section-subtitle">Key Attributes</span>
+          <h2 class="section-title">Personal <span class="text-gradient">Strengths</span></h2>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="strengths-grid">
+          <div class="strength-card glass-card reveal-up">
+            <div class="strength-icon"><i class="fa-solid fa-bolt"></i></div>
+            <h3>Fast Learner</h3>
+            <p>Rapidly absorbs new technical concepts, tools, and programming paradigms with minimal friction.</p>
+          </div>
+
+          <div class="strength-card glass-card reveal-up" style="transition-delay: 0.1s;">
+            <div class="strength-icon"><i class="fa-solid fa-brain"></i></div>
+            <h3>Problem Solving</h3>
+            <p>Logical thinker adept at diagnosing technical errors, debugging code, and resolving network faults.</p>
+          </div>
+
+          <div class="strength-card glass-card reveal-up" style="transition-delay: 0.2s;">
+            <div class="strength-icon"><i class="fa-solid fa-book-bookmark"></i></div>
+            <h3>Continuous Self-Learning</h3>
+            <p>Proactively seeks online documentation, tutorials, and projects to stay ahead in tech trends.</p>
+          </div>
+
+          <div class="strength-card glass-card reveal-up" style="transition-delay: 0.3s;">
+            <div class="strength-icon"><i class="fa-solid fa-handshake-angle"></i></div>
+            <h3>Committed</h3>
+            <p>Dedicated to seeing projects through to successful completion with exceptional quality and care.</p>
+          </div>
+
+          <div class="strength-card glass-card reveal-up" style="transition-delay: 0.4s;">
+            <div class="strength-icon"><i class="fa-solid fa-shield-check"></i></div>
+            <h3>Responsible</h3>
+            <p>Accountable for tasks, maintaining data security, hardware care, and accurate system configurations.</p>
+          </div>
+
+          <div class="strength-card glass-card reveal-up" style="transition-delay: 0.5s;">
+            <div class="strength-icon"><i class="fa-solid fa-gauge-high"></i></div>
+            <h3>Able to Work Under Pressure</h3>
+            <p>Maintains composure, clarity, and focus when tackling tight deadlines or troubleshooting emergency IT
+              issues.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="services-section section-padding">
+      <div class="container">
+        <div class="section-header text-center reveal-up">
+          <span class="section-subtitle">What I Offer</span>
+          <h2 class="section-title">My Technical <span class="text-gradient">Services</span></h2>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="services-grid">
+          <div class="service-card glass-card reveal-up">
+            <div class="service-icon"><i class="fa-solid fa-wrench"></i></div>
+            <h3>Computer Maintenance</h3>
+            <p>Comprehensive hardware inspection, component replacement, fan cleaning, and diagnostic health checks for
+              desktops.</p>
+          </div>
+
+          <div class="service-card glass-card reveal-up" style="transition-delay: 0.1s;">
+            <div class="service-icon"><i class="fa-brands fa-windows"></i></div>
+            <h3>Windows Installation</h3>
+            <p>Clean installation of Windows OS, disk partitioning, system updates, and user environment configuration.
+            </p>
+          </div>
+
+          <div class="service-card glass-card reveal-up" style="transition-delay: 0.2s;">
+            <div class="service-icon"><i class="fa-brands fa-python"></i></div>
+            <h3>Programming with Python</h3>
+            <p>Developing scripts, automation tools, CLI utilities, and algorithm solutions using Python.</p>
+          </div>
+
+          <div class="service-card glass-card reveal-up" style="transition-delay: 0.3s;">
+            <div class="service-icon"><i class="fa-solid fa-code"></i></div>
+            <h3>Basic C++ Development</h3>
+            <p>Building core C++ logic, OOP console projects, basic games, and algorithm exercises.</p>
+          </div>
+
+          <div class="service-card glass-card reveal-up" style="transition-delay: 0.4s;">
+            <div class="service-icon"><i class="fa-solid fa-network-wired"></i></div>
+            <h3>Networking Basics</h3>
+            <p>Network topology design, IP addressing, Cisco Packet Tracer simulations, router & switch setup.</p>
+          </div>
+
+          <div class="service-card glass-card reveal-up" style="transition-delay: 0.5s;">
+            <div class="service-icon"><i class="fa-solid fa-headset"></i></div>
+            <h3>Technical Support</h3>
+            <p>Software installation, driver setup, virus removal guidance, system performance tuning, and IT
+              assistance.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="contact-section section-padding bg-alt">
+      <div class="container">
+        <div class="section-header text-center reveal-up">
+          <span class="section-subtitle">Let's Connect</span>
+          <h2 class="section-title">Contact <span class="text-gradient">Information</span></h2>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Contact Details Sidebar -->
+          <div class="contact-info-card glass-card reveal-left">
+            <h3>Get In Touch</h3>
+            <p class="contact-intro">
+              Whether you have a question, a potential opportunity, or just want to discuss networking, Python, or
+              cybersecurity—feel free to reach out!
+            </p>
+
+            <div class="info-items">
+              <a href="mailto:ahmadaboalhamd94@gmail.com" class="info-item">
+                <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+                <div>
+                  <span class="info-label">Email Me</span>
+                  <span class="info-value">ahmadaboalhamd94@gmail.com</span>
+                </div>
+              </a>
+
+              <a href="tel:+201037429853" class="info-item">
+                <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+                <div>
+                  <span class="info-label">Call / WhatsApp</span>
+                  <span class="info-value">+20 103 742 9853</span>
+                </div>
+              </a>
+
+              <div class="info-item">
+                <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                <div>
+                  <span class="info-label">Location</span>
+                  <span class="info-value">Egypt</span>
+                </div>
+              </div>
+
+              <a href="https://github.com/ahmadaboalhamd94-glitch" target="_blank" rel="noopener noreferrer"
+                class="info-item">
+                <div class="info-icon"><i class="fa-brands fa-github"></i></div>
+                <div>
+                  <span class="info-label">GitHub Repository</span>
+                  <span class="info-value">ahmadaboalhamd94-glitch</span>
+                </div>
+              </a>
+            </div>
+
+            <div class="contact-socials-wrapper">
+              <span class="socials-title">Follow Me:</span>
+              <div class="social-links">
+                <a href="https://github.com/ahmadaboalhamd94-glitch" target="_blank" rel="noopener noreferrer"
+                  class="social-icon" aria-label="GitHub">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-icon"
+                  aria-label="LinkedIn">
+                  <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-icon"
+                  aria-label="YouTube">
+                  <i class="fa-brands fa-youtube"></i>
+                </a>
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-icon"
+                  aria-label="Facebook">
+                  <i class="fa-brands fa-facebook-f"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form Card -->
+          <div class="contact-form-card glass-card reveal-right">
+            <h3>Send Me A Message</h3>
+            <form id="contactForm" class="contact-form" novalidate>
+              <div class="form-group">
+                <label for="name">Your Name <span class="required">*</span></label>
+                <div class="input-wrapper">
+                  <i class="fa-solid fa-user input-icon"></i>
+                  <input type="text" id="name" name="name" placeholder="John Doe" required>
+                </div>
+                <span class="error-msg" id="nameError"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Your Email <span class="required">*</span></label>
+                <div class="input-wrapper">
+                  <i class="fa-solid fa-envelope input-icon"></i>
+                  <input type="email" id="email" name="email" placeholder="example@email.com" required>
+                </div>
+                <span class="error-msg" id="emailError"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="subject">Subject</label>
+                <div class="input-wrapper">
+                  <i class="fa-solid fa-heading input-icon"></i>
+                  <input type="text" id="subject" name="subject" placeholder="Project Inquiry / Tech Discussion">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message <span class="required">*</span></label>
+                <div class="input-wrapper textarea-wrapper">
+                  <i class="fa-solid fa-comment-dots input-icon"></i>
+                  <textarea id="message" name="message" rows="5" placeholder="Write your message here..."
+                    required></textarea>
+                </div>
+                <span class="error-msg" id="messageError"></span>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block" id="submitBtn">
+                <span>Send Message</span>
+                <i class="fa-solid fa-paper-plane"></i>
+              </button>
+            </form>
+
+            <div id="formStatus" class="form-status-alert"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <a href="#hero" class="brand-logo">
+          <span class="logo-code">&lt;</span>
+          <span class="logo-text">Ahmed<span class="logo-highlight">Mahmad</span></span>
+          <span class="logo-code">/&gt;</span>
+        </a>
+        <p class="footer-tagline">
+          Computer Maintenance & Networking Student | Aspiring Software Developer & Cybersecurity Learner
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-socials">
+        <h4>Follow Along</h4>
+        <div class="social-links">
+          <a href="https://github.com/ahmadaboalhamd94-glitch" target="_blank" rel="noopener noreferrer"
+            class="social-icon" aria-label="GitHub">
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-icon"
+            aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+          <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-icon"
+            aria-label="YouTube">
+            <i class="fa-brands fa-youtube"></i>
+          </a>
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-icon"
+            aria-label="Facebook">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-content">
+        <p>&copy; <span id="currentYear"></span> Ahmad mahmad. Built with HTML, CSS & Vanilla JS.</p>
+        <a href="#hero" class="back-to-top-link">Back to top <i class="fa-solid fa-arrow-up"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Back to Top Button -->
+  <button id="backToTopBtn" class="back-to-top-btn" aria-label="Scroll to top of page">
+    <i class="fa-solid fa-chevron-up"></i>
+  </button>
+
+  <!-- JavaScript File -->
+  <script src="js/script.js"></script>
+</body>
+
+</html>
