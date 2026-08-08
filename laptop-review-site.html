@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>لابتوباتي - مراجعات ومواصفات اللاب توبات</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap');
+
+  :root {
+    --bg: #0f0f0f;
+    --surface: #1a1a1a;
+    --surface-2: #242424;
+    --border: #2a2a2a;
+    --text: #f5f5f5;
+    --text-2: #b0b0b0;
+    --text-3: #666;
+    --accent: #3b82f6;
+    --accent-2: #22c55e;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --radius: 12px;
+    --radius-sm: 8px;
+    --shadow: 0 4px 24px rgba(0,0,0,0.4);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Cairo', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+  img { max-width: 100%; display: block; }
+
+  /* Header */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 24px;
+    position: sticky; top: 0; z-index: 100;
+    display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+  }
+  .logo {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 22px; font-weight: 700; color: var(--text);
+  }
+  .logo-icon {
+    width: 38px; height: 38px; background: linear-gradient(135deg, var(--accent), #60a5fa);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+  }
+  .logo-icon svg { width: 22px; height: 22px; color: #fff; }
+
+  .search-wrap {
+    flex: 1; max-width: 480px; position: relative;
+  }
+  .search-wrap input {
+    width: 100%; padding: 12px 44px 12px 16px;
+    background: var(--surface-2); border: 1px solid var(--border);
+    border-radius: var(--radius-sm); color: var(--text); font-size: 15px;
+    outline: none; transition: border-color 0.2s;
+  }
+  .search-wrap input:focus { border-color: var(--accent); }
+  .search-wrap input::placeholder { color: var(--text-3); }
+  .search-wrap svg {
+    position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+    color: var(--text-3); width: 20px; height: 20px;
+  }
+
+  /* Categories */
+  .categories {
+    display: flex; gap: 10px; flex-wrap: wrap;
+    padding: 20px 24px; max-width: 1400px; margin: 0 auto;
+  }
+  .cat-btn {
+    padding: 8px 18px; border-radius: 20px;
+    border: 1px solid var(--border); background: var(--surface);
+    color: var(--text-2); font-size: 14px; font-weight: 500;
+    transition: all 0.2s; white-space: nowrap;
+  }
+  .cat-btn:hover { background: var(--surface-2); color: var(--text); }
+  .cat-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+  /* Main */
+  .main { max-width: 1400px; margin: 0 auto; padding: 0 24px 80px; }
+  .section-title {
+    font-size: 20px; font-weight: 700; margin-bottom: 20px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-title svg { color: var(--accent); }
+
+  /* Grid */
+  .laptop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+
+  /* Card */
+  .laptop-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+    cursor: pointer; position: relative;
+  }
+  .laptop-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+    border-color: #333;
+  }
+  .card-img-wrap { position: relative; height: 200px; overflow: hidden; background: var(--surface-2); }
+  .card-img-wrap img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.4s;
+  }
+  .laptop-card:hover .card-img-wrap img { transform: scale(1.05); }
+  .img-count {
+    position: absolute; top: 10px; right: 10px;
+    background: rgba(0,0,0,0.7); color: #fff;
+    font-size: 12px; padding: 4px 10px; border-radius: 6px;
+    backdrop-filter: blur(4px);
+  }
+  .compare-btn {
+    position: absolute; top: 10px; left: 10px;
+    width: 34px; height: 34px; border-radius: 8px;
+    background: rgba(0,0,0,0.6); backdrop-filter: blur(4px);
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; opacity: 0; transition: opacity 0.2s;
+  }
+  .laptop-card:hover .compare-btn { opacity: 1; }
+  .compare-btn.selected {
+    opacity: 1; background: var(--accent); border-color: var(--accent);
+  }
+  .compare-btn svg { width: 18px; height: 18px; }
+
+  .card-body { padding: 16px; }
+  .card-name { font-size: 16px; font-weight: 700; margin-bottom: 4px; line-height: 1.4; }
+  .card-brand { font-size: 13px; color: var(--text-3); margin-bottom: 12px; }
+  .card-specs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+  .spec-tag {
+    font-size: 12px; padding: 3px 10px;
+    background: var(--surface-2); border-radius: 6px;
+    color: var(--text-2); border: 1px solid var(--border);
+  }
+  .card-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 12px; border-top: 1px solid var(--border);
+  }
+  .card-price { font-size: 18px; font-weight: 700; color: var(--accent-2); }
+  .card-rating { display: flex; align-items: center; gap: 4px; font-size: 13px; color: var(--text-2); }
+  .star { color: #fbbf24; }
+
+  /* Detail View */
+  .detail-view { display: none; padding: 24px; max-width: 1200px; margin: 0 auto; }
+  .detail-view.active { display: block; }
+  .back-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 20px; background: var(--surface);
+    border: 1px solid var(--border); border-radius: var(--radius-sm);
+    color: var(--text-2); font-size: 14px; font-weight: 500;
+    transition: all 0.2s; margin-bottom: 24px;
+  }
+  .back-btn:hover { background: var(--surface-2); color: var(--text); }
+  .back-btn svg { width: 18px; height: 18px; }
+
+  .detail-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
+  }
+  @media (max-width: 768px) { .detail-grid { grid-template-columns: 1fr; } }
+
+  /* Gallery */
+  .gallery-main {
+    width: 100%; height: 380px; object-fit: cover;
+    border-radius: var(--radius); background: var(--surface-2);
+    margin-bottom: 12px;
+  }
+  .gallery-thumbs {
+    display: flex; gap: 10px; overflow-x: auto;
+    padding-bottom: 4px;
+  }
+  .gallery-thumb {
+    width: 80px; height: 60px; object-fit: cover;
+    border-radius: 8px; border: 2px solid transparent;
+    cursor: pointer; flex-shrink: 0; background: var(--surface-2);
+    transition: border-color 0.2s;
+  }
+  .gallery-thumb.active { border-color: var(--accent); }
+  .gallery-thumb:hover { border-color: var(--text-3); }
+
+  .detail-info h1 { font-size: 26px; font-weight: 700; margin-bottom: 6px; }
+  .detail-sub { color: var(--text-3); font-size: 15px; margin-bottom: 20px; }
+  .detail-price-big { font-size: 32px; font-weight: 700; color: var(--accent-2); margin-bottom: 16px; }
+  .detail-rating-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 24px;
+  }
+  .detail-rating-row .stars { font-size: 20px; }
+  .detail-rating-row .score { font-size: 20px; font-weight: 700; }
+  .rating-progress {
+    width: 140px; height: 6px; background: var(--surface-2);
+    border-radius: 3px; overflow: hidden;
+  }
+  .rating-progress-fill { height: 100%; background: #fbbf24; border-radius: 3px; }
+
+  .specs-list { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+  .spec-row {
+    display: flex; justify-content: space-between;
+    padding: 14px 18px; border-bottom: 1px solid var(--border);
+    font-size: 14px;
+  }
+  .spec-row:last-child { border-bottom: none; }
+  .spec-row .spec-label { color: var(--text-3); }
+  .spec-row .spec-value { font-weight: 600; color: var(--text); }
+
+  /* Compare */
+  .compare-view { display: none; padding: 24px; max-width: 1200px; margin: 0 auto; }
+  .compare-view.active { display: block; }
+  .compare-grid-2 {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+  }
+  @media (max-width: 768px) { .compare-grid-2 { grid-template-columns: 1fr; } }
+  .compare-card-full {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); overflow: hidden;
+  }
+  .compare-card-full img { width: 100%; height: 220px; object-fit: cover; background: var(--surface-2); }
+  .compare-card-body { padding: 20px; }
+  .compare-card-body h3 { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+  .compare-card-body .brand { color: var(--text-3); font-size: 14px; margin-bottom: 12px; }
+  .compare-card-body .price { font-size: 24px; font-weight: 700; color: var(--accent-2); margin-bottom: 16px; }
+  .compare-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+  .compare-row .label { color: var(--text-3); }
+  .compare-row .value { font-weight: 600; }
+
+  /* Compare Bar */
+  .compare-bar {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: var(--surface); border-top: 1px solid var(--border);
+    padding: 14px 24px; display: none; align-items: center;
+    justify-content: space-between; z-index: 200;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+  }
+  .compare-bar.show { display: flex; }
+  .compare-bar-text { font-size: 15px; }
+  .compare-bar-text strong { color: var(--accent); }
+  .compare-bar-actions { display: flex; gap: 10px; }
+  .btn { padding: 10px 24px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 600; transition: all 0.2s; }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: #2563eb; }
+  .btn-ghost { background: transparent; border: 1px solid var(--border); color: var(--text-2); }
+  .btn-ghost:hover { background: var(--surface-2); color: var(--text); }
+
+  .empty-state {
+    text-align: center; padding: 80px 20px; color: var(--text-3);
+  }
+  .empty-state svg { width: 64px; height: 64px; margin-bottom: 16px; opacity: 0.3; }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: #444; }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+  <div class="logo" onclick="showHome()" style="cursor:pointer">
+    <div class="logo-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+    </div>
+    لابتوباتي
+  </div>
+  <div class="search-wrap">
+    <input type="text" id="searchInput" placeholder="ابحث عن لاب توب..." oninput="filterLaptops()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+  </div>
+</header>
+
+<!-- Categories -->
+<div class="categories">
+  <button class="cat-btn active" onclick="setCategory('all')">الكل</button>
+  <button class="cat-btn" onclick="setCategory('gaming')">🎮 ألعاب</button>
+  <button class="cat-btn" onclick="setCategory('ultrabook')">💻 ألترابوك</button>
+  <button class="cat-btn" onclick="setCategory('workstation')">⚙️ محطة عمل</button>
+  <button class="cat-btn" onclick="setCategory('student')">🎓 طلاب</button>
+  <button class="cat-btn" onclick="setCategory('creative')">🎨 إبداعي</button>
+</div>
+
+<!-- Home View -->
+<div class="main" id="homeView">
+  <h2 class="section-title">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+    أحدث اللاب توبات
+  </h2>
+  <div class="laptop-grid" id="laptopGrid"></div>
+  <div class="empty-state" id="emptyState" style="display:none;">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+    <p>لا توجد نتائج مطابقة للبحث</p>
+  </div>
+</div>
+
+<!-- Detail View -->
+<div class="detail-view" id="detailView">
+  <button class="back-btn" onclick="showHome()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    رجوع للقائمة
+  </button>
+  <div class="detail-grid" id="detailContent"></div>
+</div>
+
+<!-- Compare View -->
+<div class="compare-view" id="compareView">
+  <button class="back-btn" onclick="showHome()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    رجوع للقائمة
+  </button>
+  <h2 class="section-title" style="margin-bottom:24px">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h3v3h-3zM8 3h3v3H8zM3 8h3v3H3zM21 8h-3v3h3zM8 21h3v-3H8zM16 21h3v-3h-3z"/></svg>
+    مقارنة جانبية
+  </h2>
+  <div class="compare-grid-2" id="compareGrid"></div>
+</div>
+
+<!-- Compare Bar -->
+<div class="compare-bar" id="compareBar">
+  <span class="compare-bar-text">تم اختيار <strong id="compareCount">0</strong> أجهزة للمقارنة</span>
+  <div class="compare-bar-actions">
+    <button class="btn btn-ghost" onclick="clearCompare()">إلغاء</button>
+    <button class="btn btn-primary" onclick="showCompare()">قارن الآن</button>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════════
+//  بيانات اللاب توبات — اضف جهاز جديد هنا ↓↓↓
+// ═══════════════════════════════════════════════════════════════
+const laptops = [
+  {
+    id: 1,
+    name: 'MacBook Pro 16" M4 Pro',
+    brand: 'Apple',
+    category: 'creative',
+    price: 74999,
+    rating: 9.6,
+    cpu: 'Apple M4 Pro (14-core)',
+    ram: '36 GB',
+    storage: '512 GB SSD',
+    gpu: 'Apple M4 Pro 20-core',
+    screen: '16.2" Liquid Retina XDR',
+    battery: '22 ساعة',
+    weight: '2.14 كجم',
+    ports: '3x Thunderbolt 4, HDMI, SD',
+    os: 'macOS Sequoia',
+    imgs: [
+      'https://kimi-web-img.kimi.ai/img/i.pcmag.com/57d88ada6688ba5d0f8f1b083b52a012270c76cb.jpg',
+      'https://kimi-web-img.kimi.ai/img/cdn.mos.cms.futurecdn.net/62cf043be08661d0ed396e916479d13588129f9b.jpg'
+    ]
+  },
+  {
+    id: 2,
+    name: 'Dell XPS 15 (2026)',
+    brand: 'Dell',
+    category: 'ultrabook',
+    price: 52999,
+    rating: 8.9,
+    cpu: 'Intel Core Ultra 9 285H',
+    ram: '32 GB',
+    storage: '1 TB SSD',
+    gpu: 'NVIDIA RTX 4060',
+    screen: '15.6" OLED 3.5K',
+    battery: '13 ساعة',
+    weight: '1.86 كجم',
+    ports: '2x Thunderbolt 4, USB-A',
+    os: 'Windows 11',
+    imgs: [
+      'https://kimi-web-img.kimi.ai/img/i.dell.com/4789ca80849185b2dbf10e1723e32932e5362d22.psd',
+      'https://kimi-web-img.kimi.ai/img/i.dell.com/cacb373c8994a9d4292974855573c15b872a7b1c.psd'
+    ]
+  },
+  {
+    id: 3,
+    name: 'Lenovo ThinkPad X1 Carbon Gen 13',
+    brand: 'Lenovo',
+    category: 'ultrabook',
+    price: 48999,
+    rating: 9.1,
+    cpu: 'Intel Core Ultra 7 265U',
+    ram: '32 GB',
+    storage: '1 TB SSD',
+    gpu: 'Intel Arc Graphics',
+    screen: '14" 2.8K OLED',
+    battery: '15 ساعة',
+    weight: '0.98 كجم',
+    ports: '2x Thunderbolt 4, 2x USB-A, HDMI',
+    os: 'Windows 11 Pro',
+    imgs: [
+      'https://kimi-web-img.kimi.ai/img/p4-ofp.static.pub/869f424a7cabc4737831a07c85c5b8c386d6f770.png',
+      'https://kimi-web-img.kimi.ai/img/p4-ofp.static.pub/54b64c37be05912f6d8c1c253b7cae014a57450f.png'
+    ]
+  },
+  {
+    id: 4,
+    name: 'ASUS ROG Zephyrus G14 (2026)',
+    brand: 'ASUS',
+    category: 'gaming',
+    price: 45999,
+    rating: 9.0,
+    cpu: 'AMD Ryzen AI 9 HX 370',
+    ram: '32 GB',
+    storage: '1 TB SSD',
+    gpu: 'NVIDIA RTX 4070',
+    screen: '14" OLED 120Hz',
+    battery: '10 ساعات',
+    weight: '1.5 كجم',
+    ports: 'USB4, USB-A, HDMI 2.1',
+    os: 'Windows 11',
+    imgs: [
+      'https://kimi-web-img.kimi.ai/img/dlcdnwebimgs.asus.com.cn/b7b18a2f402d0b7c79109d863cd27506a0148e4a',
+      'https://dlcdnwebimgs.asus.com/gain/6e8939f7-6e2e-4e1e-8b1e-3c5d7e9f8a2a/w800/h600'
+    ]
+  },
+  {
+    id: 5,
+    name: 'HP Spectre x360 16',
+    brand: 'HP',
+    category: 'creative',
+    price: 54999,
+    rating: 8.7,
+    cpu: 'Intel Core Ultra 7 155H',
+    ram: '32 GB',
+    storage: '1 TB SSD',
+    gpu: 'Intel Arc Graphics',
+    screen: '16" 4K OLED convertible',
+    battery: '12 ساعة',
+    weight: '1.95 كجم',
+    ports: '2x Thunderbolt 4, USB-A',
+    os: 'Windows 11',
+    imgs: [
+      'https://kimi-web-img.kimi.ai/img/www.hp.com/5efa604a572d3d192103fb0e9e45358273b92846.png',
+      'https://kimi-web-img.kimi.ai/img/hp.widen.net/0f021eda2e17b6ee9639d474fd680325631ea32b.png'
+    ]
+  },
+  {
+    id: 6,
+    name: 'MSI Raider GE78 HX',
+    brand: 'MSI',
+    category: 'gaming',
+    price: 82999,
+    rating: 8.8,
+    cpu: 'Intel Core i9-14900HX',
+    ram: '64 GB',
+    storage: '2 TB SSD',
+    gpu: 'NVIDIA RTX 4090',
+    screen: '17" QHD+ 240Hz',
+    battery: '5 ساعات',
+    weight: '3.0 كجم',
+    ports: 'Thunderbolt 4, USB-A, HDMI 2.1',
+    os: 'Windows 11',
+    imgs: [
+      'https://kimi-web-img.kimi.ai/img/storage-asset.msi.com/00b6a6ffabb8b891af5412faf41dfc9f5c9f7ce8.png',
+      'https://kimi-web-img.kimi.ai/img/storage-asset.msi.com/bf93aaec7cd0462619f77247ad72f67067a21b8f.png'
+    ]
+  },
+  {
+    id: 7,
+    name: 'Acer Swift 5 (2026)',
+    brand: 'Acer',
+    category: 'student',
+    price: 24999,
+    rating: 8.2,
+    cpu: 'Intel Core Ultra 5 125U',
+    ram: '16 GB',
+    storage: '512 GB SSD',
+    gpu: 'Intel Graphics',
+    screen: '14" FHD IPS',
+    battery: '14 ساعة',
+    weight: '1.05 كجم',
+    ports: '2x USB-C, 2x USB-A, HDMI',
+    os: 'Windows 11',
+    imgs: [
+      'https://kimi-web-img.kimi.ai/img/i.pcmag.com/6f2086d3aa89b7d6ce4ce0e3a1bbec936caabd5b.jpg',
+      'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&h=600&fit=crop'
+    ]
+  },
+  {
+    id: 8,
+    name: 'Microsoft Surface Laptop 7',
+    brand: 'Microsoft',
+    category: 'student',
+    price: 44999,
+    rating: 8.5,
+    cpu: 'Qualcomm Snapdragon X Elite',
+    ram: '16 GB',
+    storage: '512 GB SSD',
+    gpu: 'Qualcomm Adreno',
+    screen: '13.8" PixelSense touchscreen',
+    battery: '20 ساعة',
+    weight: '1.2 كجم',
+    ports: '2x USB-C, USB-A',
+    os: 'Windows 11 ARM',
+    imgs: [
+      'https://kimi-web-img.kimi.ai/img/cdn-dynmedia-1.microsoft.com/dd6c0dfd482191b42dc47b8593934d5367828820',
+      'https://kimi-web-img.kimi.ai/img/cdn.microsoftstore.com.cn/76fe35b6302a3167eeaad21bdd7ecc7b567c42e7.jpg'
+    ]
+  },
+  {
+    id: 9,
+    name: 'Lenovo Legion Pro 7i',
+    brand: 'Lenovo',
+    category: 'gaming',
+    price: 64999,
+    rating: 9.2,
+    cpu: 'Intel Core i9-14900HX',
+    ram: '32 GB',
+    storage: '1 TB SSD',
+    gpu: 'NVIDIA RTX 4080',
+    screen: '16" WQXGA 240Hz',
+    battery: '6 ساعات',
+    weight: '2.8 كجم',
+    ports: 'USB-C, USB-A, HDMI 2.1',
+    os: 'Windows 11',
+    imgs: [
+      'https://kimi-web-img.kimi.ai/img/p1-ofp.static.pub/4c071e6b86845412206299ee50f8739e005cb9c7.png',
+      'https://kimi-web-img.kimi.ai/img/p3-ofp.static.pub/be6d6de14093321035b4a1ac60428db4ac39c799.png'
+    ]
+  },
+  {
+    id: 10,
+    name: 'Dell Precision 5690',
+    brand: 'Dell',
+    category: 'workstation',
+    price: 89999,
+    rating: 8.6,
+    cpu: 'Intel Core Ultra 9 185H',
+    ram: '64 GB',
+    storage: '2 TB SSD',
+    gpu: 'NVIDIA RTX 2000 Ada',
+    screen: '16" FHD+',
+    battery: '10 ساعات',
+    weight: '1.9 كجم',
+    ports: 'Thunderbolt 4, USB-A, HDMI',
+    os: 'Windows 11 Pro',
+    imgs: [
+      'https://kimi-web-img.kimi.ai/img/i.dell.com/426c4ef6f1d41cb4d82952308e8ff807ddd0661a.psd',
+      'https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=800&h=600&fit=crop'
+    ]
+  },
+  {
+    id: 11,
+    name: 'ASUS Zenbook S 14',
+    brand: 'ASUS',
+    category: 'ultrabook',
+    price: 38999,
+    rating: 8.8,
+    cpu: 'Intel Core Ultra 7 258V',
+    ram: '32 GB',
+    storage: '1 TB SSD',
+    gpu: 'Intel Arc Graphics',
+    screen: '14" 3K OLED',
+    battery: '18 ساعة',
+    weight: '1.2 كجم',
+    ports: '2x Thunderbolt 4, HDMI',
+    os: 'Windows 11',
+    imgs: [
+      'https://kimi-web-img.kimi.ai/img/dlcdnwebimgs.asus.com/25e0ef87babfbb5c7786b3eb9f8ec757fae1a47d.jpg',
+      'https://kimi-web-img.kimi.ai/img/dlcdnwebimgs.asus.com.cn/776ca3695ca39c2357f3b69e2105f309517fcd6b'
+    ]
+  },
+  {
+    id: 12,
+    name: 'HP ZBook Power G11',
+    brand: 'HP',
+    category: 'workstation',
+    price: 55999,
+    rating: 8.4,
+    cpu: 'AMD Ryzen 9 PRO 8945HS',
+    ram: '32 GB',
+    storage: '1 TB SSD',
+    gpu: 'NVIDIA RTX 3000 Ada',
+    screen: '16" FHD+',
+    battery: '11 ساعة',
+    weight: '2.1 كجم',
+    ports: 'USB-C, USB-A, HDMI',
+    os: 'Windows 11 Pro',
+    imgs: [
+      'https://kimi-web-img.kimi.ai/img/hp.widen.net/6ecc71e72ac90261820f12f053a1fdabf60940fa.png',
+      'https://kimi-web-img.kimi.ai/img/th-media.apjonlinecdn.com/8061207adcafcb6caad3780654783b8669855c01.png'
+    ]
+  }
+];
+
+// ═══════════════════════════════════════════════════════════════
+//  المنطق التفاعلي
+// ═══════════════════════════════════════════════════════════════
+let selectedCategory = 'all';
+let compareList = [];
+
+function renderStars(rating) {
+  const full = Math.floor(rating / 2);
+  let html = '';
+  for (let i = 0; i < 5; i++) {
+    html += i < full ? '<span class="star">★</span>' : '<span style="color:#333">★</span>';
+  }
+  return html;
+}
+
+function getCategoryLabel(cat) {
+  const map = { gaming: 'ألعاب', ultrabook: 'ألترابوك', workstation: 'محطة عمل', student: 'طلاب', creative: 'إبداعي' };
+  return map[cat] || cat;
+}
+
+function getCategoryIcon(cat) {
+  const map = { gaming: '🎮', ultrabook: '💻', workstation: '⚙️', student: '🎓', creative: '🎨' };
+  return map[cat] || '💻';
+}
+
+function renderLaptops() {
+  const grid = document.getElementById('laptopGrid');
+  const search = document.getElementById('searchInput').value.toLowerCase().trim();
+  const filtered = laptops.filter(l => {
+    const matchCat = selectedCategory === 'all' || l.category === selectedCategory;
+    const matchSearch = !search || l.name.toLowerCase().includes(search) || l.brand.toLowerCase().includes(search);
+    return matchCat && matchSearch;
+  });
+
+  document.getElementById('emptyState').style.display = filtered.length ? 'none' : 'flex';
+
+  grid.innerHTML = filtered.map(l => `
+    <div class="laptop-card" onclick="showDetail(${l.id})">
+      <button class="compare-btn ${compareList.includes(l.id) ? 'selected' : ''}"
+        onclick="event.stopPropagation(); toggleCompare(${l.id})" title="أضف للمقارنة">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </button>
+      ${l.imgs.length > 1 ? `<div class="img-count">${l.imgs.length} صور</div>` : ''}
+      <div class="card-img-wrap">
+        <img src="${l.imgs[0]}" alt="${l.name}" loading="lazy"
+          onerror="this.src='https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600&h=400&fit=crop'">
+      </div>
+      <div class="card-body">
+        <div class="card-name">${l.name}</div>
+        <div class="card-brand">${getCategoryIcon(l.category)} ${l.brand} · ${getCategoryLabel(l.category)}</div>
+        <div class="card-specs">
+          <span class="spec-tag">${l.cpu.split(' ').slice(0, 3).join(' ')}</span>
+          <span class="spec-tag">${l.ram}</span>
+          <span class="spec-tag">${l.screen.split(' ')[0]}</span>
+        </div>
+        <div class="card-footer">
+          <div class="card-price">${l.price.toLocaleString()} ج.م</div>
+          <div class="card-rating">${renderStars(l.rating)} ${l.rating}</div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function setCategory(cat) {
+  selectedCategory = cat;
+  document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+  renderLaptops();
+}
+
+function filterLaptops() { renderLaptops(); }
+
+// ─── Detail View ───
+function showDetail(id) {
+  const l = laptops.find(x => x.id === id);
+  if (!l) return;
+  document.getElementById('homeView').style.display = 'none';
+  document.getElementById('detailView').classList.add('active');
+  document.getElementById('compareView').classList.remove('active');
+  window.scrollTo(0, 0);
+
+  const thumbs = l.imgs.map((img, i) =>
+    `<img class="gallery-thumb ${i === 0 ? 'active' : ''}" src="${img}" onclick="setGallery(${i}, ${l.id})" alt="">`
+  ).join('');
+
+  document.getElementById('detailContent').innerHTML = `
+    <div>
+      <img class="gallery-main" id="galleryMain" src="${l.imgs[0]}" alt="${l.name}"
+        onerror="this.src='https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800&h=600&fit=crop'">
+      <div class="gallery-thumbs">${thumbs}</div>
+    </div>
+    <div class="detail-info">
+      <h1>${l.name}</h1>
+      <div class="detail-sub">${getCategoryIcon(l.category)} ${l.brand} · ${getCategoryLabel(l.category)}</div>
+      <div class="detail-price-big">${l.price.toLocaleString()} ج.م</div>
+      <div class="detail-rating-row">
+        <span class="stars">${renderStars(l.rating)}</span>
+        <span class="score">${l.rating}</span>
+        <span style="color:var(--text-3)">/ 10</span>
+        <div class="rating-progress"><div class="rating-progress-fill" style="width:${l.rating * 10}%"></div></div>
+      </div>
+      <div class="specs-list">
+        <div class="spec-row"><span class="spec-label">المعالج</span><span class="spec-value">${l.cpu}</span></div>
+        <div class="spec-row"><span class="spec-label">الرام</span><span class="spec-value">${l.ram}</span></div>
+        <div class="spec-row"><span class="spec-label">التخزين</span><span class="spec-value">${l.storage}</span></div>
+        <div class="spec-row"><span class="spec-label">كرت الشاشة</span><span class="spec-value">${l.gpu}</span></div>
+        <div class="spec-row"><span class="spec-label">الشاشة</span><span class="spec-value">${l.screen}</span></div>
+        <div class="spec-row"><span class="spec-label">البطارية</span><span class="spec-value">${l.battery}</span></div>
+        <div class="spec-row"><span class="spec-label">الوزن</span><span class="spec-value">${l.weight}</span></div>
+        <div class="spec-row"><span class="spec-label">المداخل</span><span class="spec-value">${l.ports}</span></div>
+        <div class="spec-row"><span class="spec-label">نظام التشغيل</span><span class="spec-value">${l.os}</span></div>
+      </div>
+    </div>
+  `;
+}
+
+function setGallery(idx, id) {
+  const l = laptops.find(x => x.id === id);
+  document.getElementById('galleryMain').src = l.imgs[idx];
+  document.querySelectorAll('.gallery-thumb').forEach((t, i) => t.classList.toggle('active', i === idx));
+}
+
+function showHome() {
+  document.getElementById('homeView').style.display = 'block';
+  document.getElementById('detailView').classList.remove('active');
+  document.getElementById('compareView').classList.remove('active');
+  window.scrollTo(0, 0);
+}
+
+// ─── Compare ───
+function toggleCompare(id) {
+  if (compareList.includes(id)) {
+    compareList = compareList.filter(x => x !== id);
+  } else {
+    if (compareList.length >= 2) { alert('يمكنك مقارنة جهازين فقط في الوقت الحالي'); return; }
+    compareList.push(id);
+  }
+  updateCompareBar();
+  renderLaptops();
+}
+
+function updateCompareBar() {
+  const bar = document.getElementById('compareBar');
+  document.getElementById('compareCount').textContent = compareList.length;
+  bar.classList.toggle('show', compareList.length > 0);
+}
+
+function clearCompare() { compareList = []; updateCompareBar(); renderLaptops(); }
+
+function showCompare() {
+  if (compareList.length < 2) return;
+  const a = laptops.find(x => x.id === compareList[0]);
+  const b = laptops.find(x => x.id === compareList[1]);
+  document.getElementById('homeView').style.display = 'none';
+  document.getElementById('detailView').classList.remove('active');
+  document.getElementById('compareView').classList.add('active');
+  window.scrollTo(0, 0);
+
+  const specs = [
+    { key: 'price', label: 'السعر', fmt: v => v.toLocaleString() + ' ج.م' },
+    { key: 'rating', label: 'التقييم', fmt: v => v + '/10' },
+    { key: 'cpu', label: 'المعالج', fmt: v => v },
+    { key: 'ram', label: 'الرام', fmt: v => v },
+    { key: 'storage', label: 'التخزين', fmt: v => v },
+    { key: 'gpu', label: 'كرت الشاشة', fmt: v => v },
+    { key: 'screen', label: 'الشاشة', fmt: v => v },
+    { key: 'battery', label: 'البطارية', fmt: v => v },
+    { key: 'weight', label: 'الوزن', fmt: v => v },
+    { key: 'ports', label: 'المداخل', fmt: v => v },
+    { key: 'os', label: 'نظام التشغيل', fmt: v => v },
+  ];
+
+  document.getElementById('compareGrid').innerHTML = [a, b].map(l => `
+    <div class="compare-card-full">
+      <img src="${l.imgs[0]}" alt="${l.name}"
+        onerror="this.src='https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800&h=600&fit=crop'">
+      <div class="compare-card-body">
+        <h3>${l.name}</h3>
+        <div class="brand">${l.brand}</div>
+        <div class="price">${l.price.toLocaleString()} ج.م</div>
+        ${specs.map(s => `
+          <div class="compare-row">
+            <span class="label">${s.label}</span>
+            <span class="value">${s.fmt(l[s.key])}</span>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `).join('');
+}
+
+// Init
+renderLaptops();
+</script>
+
+</body>
+</html>
